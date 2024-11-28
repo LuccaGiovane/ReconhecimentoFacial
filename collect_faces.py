@@ -1,8 +1,10 @@
 import cv2
 import os
+import sys
 
-# Nome da pessoa a ser reconhecida
-person_name = 'NomeDaPessoa'
+# Recebe o nome da pessoa
+person_name = sys.argv[1]  
+
 
 # Cria o diretório para armazenar as imagens
 os.makedirs(f'dataset/{person_name}', exist_ok=True)
