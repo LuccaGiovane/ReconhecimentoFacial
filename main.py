@@ -1,4 +1,11 @@
 import os
+
+# Reduzir logs do TensorFlow
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Mostra apenas avisos e erros
+
+# Desativar otimizações oneDNN, se necessário
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Define para '1' se quiser ativar novamente
+
 import tkinter as tk
 from tkinter import simpledialog, messagebox, font
 from PIL import Image, ImageTk
