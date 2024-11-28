@@ -1,18 +1,23 @@
-# CODINGAL-FaceRecognition
+<div align="center">
+   <h1><b>Reconhecimento Facial</b></h1><br><br>
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+   <a href="" target="_blank">![License](https://img.shields.io/badge/license-MIT-blue.svg)</a>
+   ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+
+</div>
+
 
 ## 📖 Descrição
 
-**CODINGAL-FaceRecognition** é uma aplicação de reconhecimento facial desenvolvida em Python, seguindo o tutorial da [Codingal](https://www.codingal.com/coding-for-kids/blog/build-face-recognition-app-with-python/). Este projeto permite identificar e reconhecer rostos utilizando técnicas avançadas de visão computacional e aprendizado de máquina.
+É uma aplicação de reconhecimento facial desenvolvida em Python, tendo como base o tutorial do site [Codingal](https://www.codingal.com/coding-for-kids/blog/build-face-recognition-app-with-python/). Este projeto permite capturar, treinar e reconhecer rostos utilizando técnicas avançadas de visão computacional e aprendizado de máquina.
 
 ## 🎯 Funcionalidades
 
 - **Detecção de Rostos:** Identifica e delimita rostos em imagens e vídeos.
-- **Reconhecimento Facial:** Compara rostos detectados com um banco de dados para identificar indivíduos.
-- **Treinamento Personalizado:** Adicione novos rostos ao sistema para melhorar a precisão.
-- **Interface Simples:** Interface amigável para fácil interação e uso.
+- **Captura de Imagens Faciais:** Permite coletar imagens de rostos para treinamento.
+- **Treinamento do Modelo:** Treina um modelo de reconhecimento facial com as imagens capturadas.
+- **Reconhecimento Facial em Tempo Real:** Reconhece e identifica rostos usando a webcam.
+- **Interface Simples:** Scripts fáceis de usar para cada etapa do processo.
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -20,7 +25,7 @@
 - **OpenCV:** Biblioteca de visão computacional.
 - **face_recognition:** Biblioteca para reconhecimento facial.
 - **NumPy:** Manipulação de arrays e operações matemáticas.
-- **Tkinter:** Interface gráfica do usuário (opcional, se aplicável).
+- **OS e Shutil:** Manipulação de arquivos e diretórios.
 
 ## 💾 Instalação
 
@@ -44,33 +49,27 @@
    ```bash
    python -m venv venv
    ```
-- Windows:
-   ```bash
-   venv\Scripts\activate
-   ```
-- macOS/Linux:
-   ```bash
-   source venv/bin/activate
-   ```
+   3.1 **Windows:**
+      ```bash
+      venv\Scripts\activate
+      ```
+   3.2 **macOS/Linux:**
+      ```bash
+      source venv/bin/activate
+      ```
+      
 4. **Instale as dependências necessárias:**
    ```bash
    pip install opencv-python face_recognition numpy
    ```
 
 ## 🚀 Uso
-1. **Prepare o Banco de Dados de Rostos:**
-
-  Crie uma pasta chamada **known_faces.**
-  Adicione imagens dos indivíduos que você deseja reconhecer. Nomeie os arquivos com o nome da pessoa (por exemplo, lucca.jpg).
-
-2. **Execute o Script Principal:**
-  ```bash
-  python main.py
-  ```
-3. **Interaja com a Aplicação:**
-
-  A aplicação iniciará a câmera e começará a detectar e reconhecer rostos em tempo real.
-  Rostos reconhecidos serão etiquetados com seus respectivos nomes.
+**Inicie o Programa**
+   ```bash
+   python main.py
+   ```
+1. Insira seu nome no campo indicado e espere a captura de imagens de seu rosto via webcam e posteriormente o treinamento do modelo.
+2. Após isso o script iniciará a webcam novamente e exibirá o vídeo com os rostos reconhecidos identificados.<br><br>
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
