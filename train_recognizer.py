@@ -1,50 +1,51 @@
-import cv2
+import tensorflow as tf
 import numpy as np
 import os
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 
-# Caminho para o dataset
+# Diretório do dataset
 dataset_path = 'dataset'
 
-# Inicializa o reconhecedor facial
-recognizer = cv2.face.LBPHFaceRecognizer_create()
-
-# Carrega o classificador de face
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
-# Listas para armazenar as faces e labels
-faces = []
+# Carregar as imagens e labels
+data = []
 labels = []
 
-# Dicionário para mapear labels aos nomes
-label_dict = {}
-current_id = 0
-
-# Percorre as pastas no dataset
 for root, dirs, files in os.walk(dataset_path):
-    for dir_name in dirs:
-        label_dict[current_id] = dir_name
-        subject_path = os.path.join(root, dir_name)
+    for file in files:
+        if file.endswith('.jpg'):
+            img_path = os.path.join(root, file)
+            image = tf.keras.preprocessing.image.load_img(img_path, target_size=(160, 160))
+            image = tf.keras.preprocessing.image.img_to_array(image) / 255.0
+            label = os.path.basename(root)
+            data.append(image)
+            labels.append(label)
 
-        for filename in os.listdir(subject_path):
-            if filename.endswith('.jpg') or filename.endswith('.png'):
-                image_path = os.path.join(subject_path, filename)
-                image = cv2.imread(image_path)
-                gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-                faces_rect = face_cascade.detectMultiScale(gray, 1.1, 4)
+data = np.array(data)
+labels = np.array(labels)
 
-                for (x, y, w, h) in faces_rect:
-                    face = gray[y:y+h, x:x+w]
-                    faces.append(face)
-                    labels.append(current_id)
-        current_id += 1
+# Codificação de labels
+encoder = LabelEncoder()
+encoded_labels = encoder.fit_transform(labels)
+labels_dict = dict(zip(encoder.classes_, range(len(encoder.classes_))))
 
-# Treina o reconhecedor com as faces e labels
-recognizer.train(faces, np.array(labels))
+# Divisão em treino e validação
+X_train, X_test, y_train, y_test = train_test_split(data, encoded_labels, test_size=0.2, random_state=42)
 
-# Salva o modelo treinado
-recognizer.save('training_data.yml')
+# Modelo pré-treinado
+base_model = tf.keras.applications.MobileNetV2(input_shape=(160, 160, 3), include_top=False, weights='imagenet')
+base_model.trainable = False
 
-# Salva o dicionário de labels
-np.save('labels.npy', label_dict)
+model = tf.keras.Sequential([
+    base_model,
+    tf.keras.layers.GlobalAveragePooling2D(),
+    tf.keras.layers.Dense(len(labels_dict), activation='softmax')
+])
 
-print("Treinamento concluído. Modelo salvo como 'training_data.yml' e labels salvos como 'labels.npy'.")
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10)
+
+# Salvar modelo e labels
+model.save('facial_recognition_model.h5')
+np.save('labels.npy', labels_dict)
+print("Treinamento concluído.")
