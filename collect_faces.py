@@ -5,7 +5,6 @@ import sys
 # Recebe o nome da pessoa
 person_name = sys.argv[1]  
 
-
 # Cria o diretório para armazenar as imagens
 os.makedirs(f'dataset/{person_name}', exist_ok=True)
 
@@ -19,15 +18,14 @@ img_id = 0
 
 while True:
     ret, frame = cap.read()
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Detecta faces no frame
-    faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+    # Detecta faces no frame colorido
+    faces = face_cascade.detectMultiScale(frame, 1.1, 4)
 
     # Salva cada face detectada
     for (x, y, w, h) in faces:
         img_id += 1
-        face_img = gray[y:y+h, x:x+w]
+        face_img = frame[y:y+h, x:x+w]
         cv2.imwrite(f'dataset/{person_name}/face_{img_id}.jpg', face_img)
 
         # Desenha um retângulo ao redor da face
