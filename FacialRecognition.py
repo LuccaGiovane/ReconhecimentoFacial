@@ -47,7 +47,7 @@ while True:
         # Desenhar retângulo e textos
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         cv2.putText(frame, f"{name} ({confidence}%)", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-        cv2.putText(frame, f"Emoção: {emotion_label} ({emotion_confidence}%)", (x, y + h + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
+        cv2.putText(frame, f"Emocao: {emotion_label} ({emotion_confidence}%)", (x, y + h + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
 
     cv2.imshow('Reconhecimento Facial e Emocional', frame)
 
