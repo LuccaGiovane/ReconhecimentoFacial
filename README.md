@@ -9,7 +9,7 @@
 
 ## 📖 Descrição
 
-É uma aplicação de reconhecimento facial desenvolvida em Python, tendo como base o tutorial do site [Codingal](https://www.codingal.com/coding-for-kids/blog/build-face-recognition-app-with-python/). Este projeto permite capturar, treinar e reconhecer rostos utilizando técnicas avançadas de visão computacional e aprendizado de máquina.
+É uma aplicação de reconhecimento facial desenvolvida em Python. Este projeto permite capturar, treinar e reconhecer rostos utilizando técnicas avançadas de visão computacional e aprendizado de máquina.
 
 ## 🎯 Funcionalidades
 
