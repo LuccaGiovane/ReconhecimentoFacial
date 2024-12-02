@@ -9,7 +9,7 @@
 
 ## 📖 Descrição
 
-É uma aplicação de reconhecimento facial desenvolvida em Python. Este projeto permite capturar, treinar e reconhecer rostos utilizando técnicas avançadas de visão computacional e aprendizado de máquina.
+Aplicação de reconhecimento facial desenvolvida em Python. Este projeto permite capturar e reconhecer rostos, além de detectar emoções faciais utilizando técnicas avançadas de visão computacional e aprendizado de máquina.
 
 ## 🎯 Funcionalidades
 
@@ -17,14 +17,15 @@
 - **Captura de Imagens Faciais:** Permite coletar imagens de rostos para treinamento.
 - **Treinamento do Modelo:** Treina um modelo de reconhecimento facial com as imagens capturadas.
 - **Reconhecimento Facial em Tempo Real:** Reconhece e identifica rostos usando a webcam.
+- **Detecção de Emoções:** Identifica emoções como felicidade, tristeza, raiva, surpresa, entre outras, nos rostos detectados.
 - **Interface Simples:** Scripts fáceis de usar para cada etapa do processo.
 
 ## 🛠 Tecnologias Utilizadas
 
 - **Python 3.8+**
 - **OpenCV:** Biblioteca de visão computacional.
-- **face_recognition:** Biblioteca para reconhecimento facial.
 - **NumPy:** Manipulação de arrays e operações matemáticas.
+- **TensorFlow/Keras:** Frameworks de aprendizado de máquina utilizados para a detecção de emoções.
 - **OS e Shutil:** Manipulação de arquivos e diretórios.
 
 ## 💾 Instalação
@@ -70,6 +71,9 @@
    ```
 1. Insira seu nome no campo indicado e espere a captura de imagens de seu rosto via webcam e posteriormente o treinamento do modelo.
 2. Após isso o script iniciará a webcam novamente e exibirá o vídeo com os rostos reconhecidos identificados.<br><br>
+
+## 📊 Dataset de Treinamento para Detecção de Emoções
+Para a detecção de emoções, utilizei o dataset [FER-2013](https://www.kaggle.com/datasets/msambare/fer2013), que contém milhares de imagens de rostos classificados em diferentes emoções, como felicidade, tristeza, raiva, surpresa, entre outras.
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
